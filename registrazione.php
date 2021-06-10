@@ -65,9 +65,9 @@
     <section id="header" class="sticky-top d-flex align-items-cente">
         <div class="container-fluid container-xl d-flex align-items-center justify-content-lg-between">
 
-            <h1 class="logo me-auto me-lg-0"><a href="index.html">LaMantia</a></h1>
+            <h1 class="logo me-auto me-lg-0"><a href="index.php">LaMantia</a></h1>
             <!-- Uncomment below if you prefer to use an image logo -->
-            <!-- <a href="index.html" class="logo me-auto me-lg-0"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+            <!-- <a href="index.php" class="logo me-auto me-lg-0"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
             <nav id="navbar" class="navbar order-last order-lg-0">
                 <ul>
@@ -136,7 +136,7 @@
                             <div class="validate"></div>
                         </div>
                     </div>
-                    
+
                     <!-- TODO: Inserisci il controllo sulla maggiore età -->
                     <div class="row">
                         <div class="col-lg-4 col-md-6 form-group">
@@ -156,13 +156,13 @@
                     <div class="mb-3">
                         <div class="loading">Loading</div>
                         <div class="error-message"></div>
-                        <div class="sent-message">Your booking request was sent. We will call back or send an Email to confirm your reservation. Thank you!</div>
+                        <div class="sent-message">Ti sei registrato con successo! Ora puoi eseguire il login.</div>
                     </div>
                     <div class="text-center"><button type="submit">Registrati</button></div>
                 </form>
 
             </div>
-        </section><!-- End Book A Table Section -->
+        </section><!-- End Registration Section -->
 
     </main><!-- End #main -->
 

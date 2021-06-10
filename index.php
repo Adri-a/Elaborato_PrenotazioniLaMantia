@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="it">
 
@@ -65,9 +68,9 @@
   <header id="header" class="fixed-top d-flex align-items-cente">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-lg-between">
 
-      <h1 class="logo me-auto me-lg-0"><a href="index.html">LaMantia</a></h1>
+      <h1 class="logo me-auto me-lg-0"><a href="index.php">LaMantia</a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html" class="logo me-auto me-lg-0"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+      <!-- <a href="index.php" class="logo me-auto me-lg-0"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
@@ -99,8 +102,20 @@
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
-      <a href = "login.php" class="book-a-table-btn">Login</a>
-      <a href= "registrazione.php" clas="book-a-table-btn">Registrati</a>
+      <?php
+      if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+      ?>
+        <a href="profilo.php" class="book-a-table-btn">Il mio profilo</a>
+        <a href="logout.php" class="book-a-table-btn">Logout</a>
+      <?php
+      } else {
+      ?>
+
+        <a href="login.php" class="book-a-table-btn">Login</a>
+        <a href="registrazione.php" clas="book-a-table-btn">Registrati</a>
+      <?php
+      }
+      ?>
       <!--<a href = "#book-a-table" class="book-a-table-btn scrollto d-none d-lg-flex">Book a table</a> -->
 
     </div>
