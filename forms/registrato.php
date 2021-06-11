@@ -24,7 +24,7 @@
 
         if ($result)
         {
-            echo "Aggiunto al db";
+            echo "OK";
         } else
         {
             echo mysqli_error($conn);

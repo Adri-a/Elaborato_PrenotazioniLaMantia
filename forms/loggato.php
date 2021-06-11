@@ -16,8 +16,8 @@
             $_SESSION["loggedin"] = true;
             $_SESSION["user"] = $email;
             $_SESSION["nome"] = $result["nome"];
-            
-            header("location: ../index.php");
+            echo "REDIRECT, index.php";
+            //header("location: ../index.php");
         } else
         {
             echo "Password sbagliata.";

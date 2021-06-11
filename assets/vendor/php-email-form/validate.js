@@ -67,7 +67,12 @@
       if (data.trim() == 'OK') {
         thisForm.querySelector('.sent-message').classList.add('d-block');
         thisForm.reset(); 
-      } else {
+      } else if (data.split(',')[0] == 'REDIRECT')
+      {
+        thisForm.reset();
+        window.location.replace(data.split(',')[1]);
+      }
+      else {
         throw new Error(data ? data : 'Form submission failed and no error message returned from: ' + action); 
       }
     })

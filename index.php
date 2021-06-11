@@ -99,7 +99,7 @@ session_start();
             </ul>
           </li>
           -->
-          <li><a class="nav-link" href="Ristoranti.php">Ristoranti</a></li>
+          <li><a class="nav-link" href="Ristoranti.php">Dove siamo</a></li>
           <li><a class="nav-link scrollto" href="#contact">Contattaci</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
@@ -610,7 +610,7 @@ session_start();
 
           </div>
           <div class="form-group mt-3">
-            <textarea class="form-control" name="message" rows="5" placeholder="Note"></textarea>
+            <textarea class="form-control" name="notes" rows="5" placeholder="Note"></textarea>
             <div class="validate"></div>
           </div>
           <div class="row">
@@ -636,7 +636,7 @@ session_start();
             <div class="mb-3">
               <div class="loading">Loading</div>
               <div class="error-message"></div>
-              <div class="sent-message">Your booking request was sent. We will call back or send an Email to confirm your reservation. Thank you!</div>
+              <div class="sent-message">Prenotazione inviata!</div>
             </div>
             <div class="text-center"><button type="submit">Prenota</button></div>
         </form>
