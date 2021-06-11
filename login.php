@@ -121,7 +121,7 @@
                     <div class="row">
                         <label for="email">Inserisci la tua email:</label>
                         <div class="col-lg-4 col-md-6 form-group">
-                            <input type="email" class="form-control" name="email" id="email" placeholder="La tua mail" data-rule="email" data-msg="Inserisci un'email valida">
+                            <input type="email" class="form-control" name="email" id="email" placeholder="La tua mail" data-rule="email" data-msg="Inserisci un'email valida" required>
                             <div class="validate"></div>
                         </div>
                     </div>
@@ -129,7 +129,7 @@
                     <div class="row">
                         <label for="password">Inserisci la tua password: </label>
                         <div class="col-lg-4 col-md-6 form-group mt-3 mt-md-0">
-                            <input type="password" class="form-control" name="password" id="password" placeholder="La tua password" data_rule="password">
+                            <input type="password" class="form-control" name="password" id="password" placeholder="La tua password" data_rule="password" required>
                         </div>
                     </div>
                     <div class="mb-3">

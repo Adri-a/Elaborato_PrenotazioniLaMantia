@@ -128,11 +128,12 @@
                     <div class="row">
                         <label for="name surname">Inserisci il tuo nome e cognome:</label>
                         <div class="col-lg-4 col-md-6 form-group mt-3 mt-md-0">
-                            <input type="text" name="name" class="form-control" id="name" placeholder="Il tuo nome" data-rule="minlen:2" data-msg="E' necessario inserire almeno 2 caratteri">
+                            <input type="text" name="name" class="form-control" id="name" placeholder="Il tuo nome" data-rule="minlen:2" data-msg="E' necessario inserire almeno 2 caratteri"
+                            required>
                             <div class="validate"></div>
                         </div>
                         <div class="col-lg-4 col-md-6 form-group mt-3 mt-md-0">
-                            <input type="text" name="surname" class="form-control" id="surname" placeholder="Il tuo cognome" data-rule="minlen:2" data-msg="E' necessario inserire almeno 2 caratteri">
+                            <input type="text" name="surname" class="form-control" id="surname" placeholder="Il tuo cognome" data-rule="minlen:2" data-msg="E' necessario inserire almeno 2 caratteri" required>
                             <div class="validate"></div>
                         </div>
                     </div>
@@ -141,16 +142,16 @@
                     <div class="row">
                         <div class="col-lg-4 col-md-6 form-group">
                             <label for="birthdate">Inserisci la tua data di nascita:</label>
-                            <input type="date" class="form-control" name="birthdate" id="birthdate" min="1900-01-01" max="<?php echo date("Y-m-d") ?>">
+                            <input type="date" class="form-control" name="birthdate" id="birthdate" min="1900-01-01" max="<?php echo date("Y-m-d") ?>" required>
                         </div>
                     </div>
                     <div class="row">
                         <label for="password">Inserisci la tua password: </label>
                         <div class="col-lg-4 col-md-6 form-group mt-3 mt-md-0">
-                            <input type="password" class="form-control" name="password" id="password" placeholder="La tua password" data_rule="password">
+                            <input type="password" class="form-control" name="password" id="password" placeholder="La tua password" data_rule="password" required>
                         </div>
                         <div class="col-lg-4 col-md-6 form-group mt-3 mt-md-0">
-                            <input type="password" class="form-control" name="confermaPassword" id="password" placeholder="Conferma la password" data_rule="password">
+                            <input type="password" class="form-control" name="confermaPassword" id="password" placeholder="Conferma la password" data_rule="password" required>
                         </div>
                     </div>
                     <div class="mb-3">

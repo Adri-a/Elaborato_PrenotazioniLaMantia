@@ -77,11 +77,11 @@ session_start();
           <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
           <li><a class="nav-link scrollto" href="#about">About</a></li>
           <li><a class="nav-link scrollto" href="#menu">Menu</a></li>
-          <li><a class="nav-link scrollto" href="#specials">Specials</a></li>
+          <li><a class="nav-link scrollto" href="#specials">Servizi</a></li>
           <li><a class="nav-link scrollto" href="#events">Events</a></li>
           <li><a class="nav-link scrollto" href="#chefs">Chefs</a></li>
-          <li><a class="nav-link scrollto" href="#gallery">Gallery</a></li>
-          <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
+          <li><a class="nav-link scrollto" href="#gallery">Galleria</a></li>
+          <!--<li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="#">Drop Down 1</a></li>
               <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
@@ -98,14 +98,16 @@ session_start();
               <li><a href="#">Drop Down 4</a></li>
             </ul>
           </li>
-          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+          -->
+          <li><a class="nav-link" href="Ristoranti.php">Ristoranti</a></li>
+          <li><a class="nav-link scrollto" href="#contact">Contattaci</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
       <?php
       if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
       ?>
-        <a href="profilo.php" class="book-a-table-btn">Il mio profilo</a>
+      <a href="index.php#book-a-table" class="book-a-table-btn">Prenota</a>
         <a href="logout.php" class="book-a-table-btn">Logout</a>
       <?php
       } else {
@@ -126,17 +128,28 @@ session_start();
     <div class="container position-relative text-center text-lg-start" data-aos="zoom-in" data-aos-delay="100">
       <div class="row">
         <div class="col-lg-8">
-          <h1>Welcome to <span>Restaurantly</span></h1>
-          <h2>Delivering great food for more than 18 years!</h2>
+          <?php
+          if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 
+            echo "<h1>Bentornato, <span>" . $_SESSION['nome'] . "</span>!</h1>";
+            echo "<h2>Cosa vuoi fare?</h2>";
+          } else {
+          ?>
+            <h1>Ristoranti <span>LaMantia</span>,</h1>
+            <h1>ora a casa tua</h1>
+            <h2>Registrati, esegui il login e prenota uno dei nostri servizi! Tutto in sicurezza.</h2>
+
+          <?php
+          }
+          ?>
           <div class="btns">
-            <a href="#menu" class="btn-menu animated fadeInUp scrollto">Our Menu</a>
-            <a href="#book-a-table" class="btn-book animated fadeInUp scrollto">Book a Table</a>
+            <a href="#menu" class="btn-menu animated fadeInUp scrollto">Il nostro menù</a>
+            <a href="#book-a-table" class="btn-book animated fadeInUp scrollto">Prenota</a>
           </div>
         </div>
-        <div class="col-lg-4 d-flex align-items-center justify-content-center position-relative" data-aos="zoom-in" data-aos-delay="200">
+        <!--<div class="col-lg-4 d-flex align-items-center justify-content-center position-relative" data-aos="zoom-in" data-aos-delay="200">
           <a href="https://www.youtube.com/watch?v=GlrxcuEDyF8" class="glightbox play-btn"></a>
-        </div>
+        </div> -->
 
       </div>
     </div>
@@ -338,8 +351,8 @@ session_start();
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-          <h2>Specials</h2>
-          <p>Check Our Specials</p>
+          <h2>Servizi</h2>
+          <p>I servizi che offriamo</p>
         </div>
 
         <div class="row" data-aos="fade-up" data-aos-delay="100">
@@ -537,46 +550,95 @@ session_start();
 
         <div class="section-title">
           <h2>Prenota</h2>
-          <p>Book a Table</p>
+          <p>Inserisci i dati necessari</p>
         </div>
 
-        <form action="forms/book-a-table.php" method="post" role="form" class="php-email-form" data-aos="fade-up" data-aos-delay="100">
+        <form action="forms/prenotazione.php" method="post" role="form" class="php-email-form" data-aos="fade-up" data-aos-delay="100">
           <div class="row">
-            <div class="col-lg-4 col-md-6 form-group">
-              <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+            <h2>Come possiamo contattarti</h2> <small>(Ometti il prefisso nazionale e gli spazi)</small>
+            <div class="col-lg-4 col-md-6 form-group mt-3 mt-md-0">
+              <input type="tel" class="form-control" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" name="phone" id="phone" placeholder="Un numero di telefono" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+              <div class="validate"></div>
+            </div>
+          </div>
+          <div class="row"><br></div>
+          <div class="row">
+            <h2>Data e giorno</h2>
+            <div class="col-lg-4 col-md-6 form-group mt-3 mt-md-0">
+              <input type="date" name="date" class="form-control" id="date" placeholder="Date" min="<?php echo date("Y-m-d") ?>" data-msg="Please enter at least 4 chars">
               <div class="validate"></div>
             </div>
             <div class="col-lg-4 col-md-6 form-group mt-3 mt-md-0">
-              <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email">
+              <select name="time" id="time" placeholder="--:--" class="form-control">
+                <?php
+                echo "<option class=\" placeholder form-control\">--:--</option>";
+                for ($h = 12; $h < 21; $h++) {
+                  for ($m = 0; $m < 60; $m = $m + 15) {
+                    if ($m == 0) $m = '00';
+                    echo "<option value=\"$h:$m\" class=\"form-control\">$h:$m</option>";
+                  }
+                }
+                ?>
+              </select>
+              <div class="validate"></div>
+            </div>
+          </div>
+          <div class="row"><br></div>
+          <div class="row">
+            <h2>Persone, servizio e note</h2>
+
+            <div class="col-lg-4 col-md-6 form-group mt-3 mt-md-0">
+              <input type="number" class="form-control" name="people" value="1" id="people" placeholder="n. di persone" min="1" data-rule="minlen:1" data-msg="Please enter at least 1 chars">
               <div class="validate"></div>
             </div>
             <div class="col-lg-4 col-md-6 form-group mt-3 mt-md-0">
-              <input type="text" class="form-control" name="phone" id="phone" placeholder="Your Phone" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
-              <div class="validate"></div>
+              <select name="service" id="service" class="form-control">
+                <?php
+                $conn = mysqli_connect("localhost", "root", "", "prenotazioniLaMantia");
+                $query = "SELECT * FROM `servizi` WHERE 1";
+                $result = mysqli_query($conn, $query);
+
+                if ($result) {
+                  echo "<option \" class=\"form-control\">Seleziona un servizio</option>";
+                  while ($row = mysqli_fetch_assoc($result)) {
+                    echo "<option value=\"" . $row["nome"] . "\" class=\"form-control\"> " . $row["nome"] . " (€" . $row["prezzo"] . ")</option>";
+                  }
+                }
+                ?>
+              </select>
             </div>
-            <div class="col-lg-4 col-md-6 form-group mt-3">
-              <input type="text" name="date" class="form-control" id="date" placeholder="Date" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
-              <div class="validate"></div>
-            </div>
-            <div class="col-lg-4 col-md-6 form-group mt-3">
-              <input type="text" class="form-control" name="time" id="time" placeholder="Time" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
-              <div class="validate"></div>
-            </div>
-            <div class="col-lg-4 col-md-6 form-group mt-3">
-              <input type="number" class="form-control" name="people" id="people" placeholder="n. di persone" data-rule="minlen:1" data-msg="Please enter at least 1 chars">
-              <div class="validate"></div>
-            </div>
+
           </div>
           <div class="form-group mt-3">
-            <textarea class="form-control" name="message" rows="5" placeholder="Message"></textarea>
+            <textarea class="form-control" name="message" rows="5" placeholder="Note"></textarea>
             <div class="validate"></div>
           </div>
-          <div class="mb-3">
-            <div class="loading">Loading</div>
-            <div class="error-message"></div>
-            <div class="sent-message">Your booking request was sent. We will call back or send an Email to confirm your reservation. Thank you!</div>
+          <div class="row">
+            <br>
           </div>
-          <div class="text-center"><button type="submit">Prenota</button></div>
+          <div class="row">
+            <h2>Indirizzo</h2>
+            <div class="col-lg-4 col-md-6 form-group mt-3 mt-md-0">
+              <input type="text" class="form-control" placeholder="Via/Piazza" name="address" id="address">
+            </div>
+            <div class="col-lg-4 col-md-6 form-group mt-3 mt-md-0">
+              <input type="text" class="form-control" placeholder="N. civico" name="number" id="number">
+            </div>
+          </div>
+          <div class="row">
+          <div class="col-lg-4 col-md-6 form-group mt-3 mt-md-0">
+          <input type="text" class="form-control" placeholder="Città" name="city" id="city">
+          </div>
+          <div class="col-lg-4 col-md-6 form-group mt-3 mt-md-0">
+          <input type="text" class="form-control" placeholder="Provincia" name="province" id="province" minlength="2" maxlength="2" size="2">
+          </div>
+          </div>
+            <div class="mb-3">
+              <div class="loading">Loading</div>
+              <div class="error-message"></div>
+              <div class="sent-message">Your booking request was sent. We will call back or send an Email to confirm your reservation. Thank you!</div>
+            </div>
+            <div class="text-center"><button type="submit">Prenota</button></div>
         </form>
 
       </div>
