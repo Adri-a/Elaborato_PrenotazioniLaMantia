@@ -75,10 +75,10 @@ session_start();
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
           <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="#about">About</a></li>
+          <li><a class="nav-link scrollto" href="#about">Chi siamo</a></li>
           <li><a class="nav-link scrollto" href="#menu">Menu</a></li>
           <li><a class="nav-link scrollto" href="#specials">Servizi</a></li>
-          <li><a class="nav-link scrollto" href="#events">Events</a></li>
+          <li><a class="nav-link scrollto" href="#events">Eventi</a></li>
           <li><a class="nav-link scrollto" href="#chefs">Chefs</a></li>
           <li><a class="nav-link scrollto" href="#gallery">Galleria</a></li>
           <!--<li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
@@ -553,7 +553,7 @@ session_start();
           <p>Inserisci i dati necessari</p>
         </div>
 
-        <form action="forms/prenotazione.php" method="post" role="form" class="php-email-form" data-aos="fade-up" data-aos-delay="100">
+        <form action="forms/prenotazione.php" method="post" role="form" class="php-email-form" data-aos="fade-up" data-aos-delay="100" id="booking">
           <div class="row">
             <h2>Come possiamo contattarti</h2> <small>(Ometti il prefisso nazionale e gli spazi)</small>
             <div class="col-lg-4 col-md-6 form-group mt-3 mt-md-0">
@@ -563,7 +563,7 @@ session_start();
           </div>
           <div class="row"><br></div>
           <div class="row">
-            <h2>Data e giorno</h2>
+            <h2>Data e ora</h2>
             <div class="col-lg-4 col-md-6 form-group mt-3 mt-md-0">
               <input type="date" name="date" class="form-control" id="date" placeholder="Date" min="<?php echo date("Y-m-d") ?>" data-msg="Please enter at least 4 chars">
               <div class="validate"></div>
