@@ -29,12 +29,11 @@ if ($result_chef) {
     if (mysqli_num_rows($result_chef) > 0) {
         //Assegnazione del primo chef disponibile alla prenotazione
         $chef_assegnato = mysqli_fetch_row($result_chef);
-        if($note == "")
-        {
+        //$query = "START TRANSACTION; \nSET autocommit = OFF; \n";
+        if ($note == "") {
             $query = "INSERT INTO `prenotazioni`(`cliente`, `data`, `chef`, `servizio`, `n_persone`, `via`, `n_civico`, `citta`, `provincia`, `note`)
             VALUES (\"" . $_SESSION["user"] . "\", \"$data $ora\",\"" . $chef_assegnato[0] . "\",\"$servizio\",$persone,\"" . $indirizzo[0] . "\",
             \"" . $indirizzo[1] . "\",\"" . $indirizzo[2] . "\",\"" . $indirizzo[3] . "\", null)";
-
         }
         $query = "INSERT INTO `prenotazioni`(`cliente`, `data`, `chef`, `servizio`, `n_persone`, `via`, `n_civico`, `citta`, `provincia`, `note`)
             VALUES (\"" . $_SESSION["user"] . "\", \"$data $ora\",\"" . $chef_assegnato[0] . "\",\"$servizio\",$persone,\"" . $indirizzo[0] . "\",
@@ -42,8 +41,16 @@ if ($result_chef) {
 
         $result = mysqli_query($conn, $query);
         if ($result) {
-            echo "OK";
-            return;
+            //Ottengo prezzo di servizio prenotato
+            $query_prezzo = "SELECT prezzo FROM servizi WHERE nome = \"$servizio\"";
+            $result_prezzo = mysqli_query($conn, $query_prezzo);
+
+            if ($result_prezzo) {
+                $prezzo = mysqli_fetch_assoc($result_prezzo)["prezzo"];
+                //restituisce un JSON
+                echo '{"risultato": "OK", "prezzo": "' . $prezzo . '"}';
+                return;
+            }
         } else {
             echo mysqli_error($conn);
         }
@@ -54,3 +61,5 @@ if ($result_chef) {
 } else {
     echo mysqli_error($conn);
 }
+
+mysqli_close($conn);
