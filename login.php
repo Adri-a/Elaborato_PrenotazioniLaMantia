@@ -47,7 +47,7 @@
                 <!--
         <i class="bi bi-phone d-flex align-items-center"><span>+1 5589 55488 55</span></i>
       -->
-                <i class="bi bi-clock d-flex align-items-center ms-4"><span> Lun-Sab: 12.00 - 21.00</span></i>
+                <i class="bi bi-clock d-flex align-items-center ms-4"><span> Mar-Dom: 12.00 - 22.00</span></i>
             </div>
 
             <!--

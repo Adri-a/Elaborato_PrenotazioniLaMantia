@@ -50,7 +50,7 @@ session_start();
         <!--
         <i class="bi bi-phone d-flex align-items-center"><span>+1 5589 55488 55</span></i>
       -->
-        <i class="bi bi-clock d-flex align-items-center ms-4"><span> Lun-Sab: 12.00 - 21.00</span></i>
+        <i class="bi bi-clock d-flex align-items-center ms-4"><span> Mar-Dom: 12.00 - 22.00</span></i>
       </div>
 
       <!--
@@ -557,7 +557,7 @@ session_start();
           <div class="row">
             <h2>Come possiamo contattarti</h2> <small>(Ometti il prefisso nazionale e gli spazi)</small>
             <div class="col-lg-4 col-md-6 form-group mt-3 mt-md-0">
-              <input type="tel" class="form-control" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" name="phone" id="phone" placeholder="Un numero di telefono" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+              <input type="tel" class="form-control" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" name="phone" id="phone" placeholder="Un numero di telefono" data-rule="minlen:4" data-msg="Please enter at least 4 chars" required>
               <div class="validate"></div>
             </div>
           </div>
@@ -565,7 +565,7 @@ session_start();
           <div class="row">
             <h2>Data e ora</h2>
             <div class="col-lg-4 col-md-6 form-group mt-3 mt-md-0">
-              <input type="date" name="date" class="form-control" id="date" placeholder="Date" min="<?php echo date("Y-m-d") ?>" data-msg="Please enter at least 4 chars">
+              <input type="date" name="date" class="form-control" id="date" placeholder="Date" min="<?php echo date("Y-m-d") ?>" data-msg="Please enter at least 4 chars" required>
               <div class="validate"></div>
             </div>
             <div class="col-lg-4 col-md-6 form-group mt-3 mt-md-0">
@@ -588,7 +588,7 @@ session_start();
             <h2>Persone, servizio e note</h2>
 
             <div class="col-lg-4 col-md-6 form-group mt-3 mt-md-0">
-              <input type="number" class="form-control" name="people" value="1" id="people" placeholder="n. di persone" min="1" data-rule="minlen:1" data-msg="Please enter at least 1 chars">
+              <input type="number" class="form-control" name="people" value="1" max="15" id="people" placeholder="n. di persone" min="1" data-rule="minlen:1" data-msg="Please enter at least 1 chars">
               <div class="validate"></div>
             </div>
             <div class="col-lg-4 col-md-6 form-group mt-3 mt-md-0">
@@ -610,7 +610,7 @@ session_start();
 
           </div>
           <div class="form-group mt-3">
-            <textarea class="form-control" name="notes" rows="5" placeholder="Note"></textarea>
+            <textarea class="form-control" name="notes" maxlength="300" rows="5" placeholder="Note"></textarea>
             <div class="validate"></div>
           </div>
           <div class="row">
@@ -619,18 +619,18 @@ session_start();
           <div class="row">
             <h2>Indirizzo</h2>
             <div class="col-lg-4 col-md-6 form-group mt-3 mt-md-0">
-              <input type="text" class="form-control" placeholder="Via/Piazza" name="address" id="address">
+              <input type="text" class="form-control" placeholder="Via/Piazza" name="address" maxlength="50" id="address" required>
             </div>
             <div class="col-lg-4 col-md-6 form-group mt-3 mt-md-0">
-              <input type="text" class="form-control" placeholder="N. civico" name="number" id="number">
+              <input type="text" class="form-control" placeholder="N. civico" name="number" maxlength="5" id="number" required>
             </div>
           </div>
           <div class="row">
           <div class="col-lg-4 col-md-6 form-group mt-3 mt-md-0">
-          <input type="text" class="form-control" placeholder="Città" name="city" id="city">
+          <input type="text" class="form-control" placeholder="Città" name="city" id="city" maxlength="35" required>
           </div>
           <div class="col-lg-4 col-md-6 form-group mt-3 mt-md-0">
-          <input type="text" class="form-control" placeholder="Provincia" name="province" id="province" minlength="2" maxlength="2" size="2">
+          <input type="text" class="form-control" placeholder="Provincia" name="province" id="province" minlength="2" maxlength="2" size="2" required>
           </div>
           </div>
             <div class="mb-3">

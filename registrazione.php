@@ -47,7 +47,7 @@
                 <!--
         <i class="bi bi-phone d-flex align-items-center"><span>+1 5589 55488 55</span></i>
       -->
-                <i class="bi bi-clock d-flex align-items-center ms-4"><span> Lun-Sab: 12.00 - 21.00</span></i>
+                <i class="bi bi-clock d-flex align-items-center ms-4"><span> Mar-Dom: 12.00 - 22.00</span></i>
             </div>
 
             <!--
@@ -142,7 +142,7 @@
                     <div class="row">
                         <div class="col-lg-4 col-md-6 form-group">
                             <label for="birthdate">Inserisci la tua data di nascita:</label>
-                            <input type="date" class="form-control" name="birthdate" id="birthdate" min="1900-01-01" max="<?php echo date("Y-m-d") ?>" required>
+                            <input type="date" class="form-control" name="birthdate" id="birthdate" min="1900-01-01" max="<?php echo date("Y-m-d", strtotime("-18 years"))?>" required>
                         </div>
                     </div>
                     <div class="row">

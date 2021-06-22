@@ -73,7 +73,11 @@
         }
         else if (isJson(data)) {
           const array = JSON.parse(data);
-          localStorage.setItem("prezzo", array.prezzo);
+          //localStorage.setItem("prezzo", array.prezzo);
+          for(let key in array) {
+            localStorage.setItem(key, array[key]);
+            console.log(key + " " + array[key]);
+          }
           window.location.replace("pagamento_prenotazione.php");
         }
         else {

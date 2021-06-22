@@ -1,6 +1,10 @@
 <?php
 session_start();
 
+if (!isset($_SESSION["user"])) {
+  header("location:index.php");
+  return;
+}
 ?>
 
 <!DOCTYPE html>
@@ -52,7 +56,7 @@ session_start();
         <!--
         <i class="bi bi-phone d-flex align-items-center"><span>+1 5589 55488 55</span></i>
       -->
-        <i class="bi bi-clock d-flex align-items-center ms-4"><span> Lun-Sab: 12.00 - 21.00</span></i>
+        <i class="bi bi-clock d-flex align-items-center ms-4"><span> Mar-Dom: 12.00 - 22.00</span></i>
       </div>
 
       <!--
@@ -74,31 +78,10 @@ session_start();
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.php" class="logo me-auto me-lg-0"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
-      <nav id="navbar" class="navbar order-last order-lg-0">
-        <ul>
-          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="#about">Chi siamo</a></li>
-          <li><a class="nav-link scrollto" href="#menu">Menu</a></li>
-          <li><a class="nav-link scrollto" href="#specials">Servizi</a></li>
-          <li><a class="nav-link scrollto" href="#events">Eventi</a></li>
-          <li><a class="nav-link scrollto" href="#chefs">Chefs</a></li>
-          <li><a class="nav-link scrollto" href="#gallery">Galleria</a></li>
-          <li><a class="nav-link" href="Ristoranti.php">Dove siamo</a></li>
-          <li><a class="nav-link scrollto" href="#contact">Contattaci</a></li>
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
       <?php
       if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
       ?>
-        <a href="index.php#book-a-table" class="book-a-table-btn">Prenota</a>
         <a href="logout.php" class="book-a-table-btn">Logout</a>
-      <?php
-      } else {
-      ?>
-
-        <a href="login.php" class="book-a-table-btn">Login</a>
-        <a href="registrazione.php" clas="book-a-table-btn">Registrati</a>
       <?php
       }
       ?>
@@ -110,32 +93,101 @@ session_start();
   <section id="payment-section" class="d-flex justify-content-center">
     <div class="container">
       <div class="row">
-        <div class="col-lg-12 d-flex justify-content-center">
-          <h2>Conferma la tua prenotazione</h2>
+        <div class="col-lg-12 d-flex justify-content-start">
+          <h2 class="mb-3">Conferma la tua prenotazione</h2>
         </div>
       </div>
       <div class="row">
-      <div class="col-lg-12 d-flex justify-content-center">
-      <div class="form">
-      <p>Giorno e ora:</p>
-      <p></p>
-      </div>
-      </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-12 d-flex justify-content-center">
+        <div class="col-8">
+          <div class="row">
+            <div class="col-3">
+              <h3 class="confirm-payment">Giorno e ora:</h3>
+            </div>
+            <div class="col-3">
+              <p id="data"></p>
+            </div>
+            <div class="col-4">
+            </div>
+
+          </div>
+
+          <div class="row">
+            <div class="col-3">
+              <h3 class="confirm-payment">Telefono:</h3>
+            </div>
+            <div class="col-3">
+              <p id="telefono"></p>
+            </div>
+            <div class="col-4">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-3">
+              <h3 class="confirm-payment">Servizio:</h3>
+            </div>
+            <div class="col-3">
+              <p id="servizio"></p>
+            </div>
+            <div class="col-4"></div>
+
+          </div>
+
+          <div class="row">
+            <div class="col-3">
+              <h3 class="confirm-payment">N. di persone:</h3>
+            </div>
+            <div class="col-3">
+              <p id="persone"></p>
+            </div>
+            <div class="col-4"></div>
+          </div>
+
+          <div class="row">
+            <div class="col-3">
+              <h3 class="confirm-payment">Note:</h3>
+            </div>
+            <div class="col-3">
+              <p id="note"></p>
+            </div>
+            <div class="col-4"></div>
+
+          </div>
+
+          <div class="row">
+            <div class="col-3">
+              <h3 class="confirm-payment">Luogo:</h3>
+            </div>
+            <div class="col-3">
+              <p id="indirizzo"></p>
+            </div>
+            <div class="col-4"></div>
+          </div>
+        </div>
+        <div class="col p-3">
           <div id="paypal-button-container"></div>
         </div>
+      </div>
+      <div class="mb-3">
+        <div class="sent-payment">La tua prenotazione è stata effettuata! Chiama per ulteriori informazioni o ritorna alla home.</div>
+        <a href="index.php" class="home-btn justify-content-center">Home</a>
       </div>
     </div>
   </section>
   <!-- Script Paypal API -->
-  <!-- Script con authorize 
-          <script src="https://www.paypal.com/sdk/js?client-id=AY7aAfew0L4yha9Uihrw0tqORdnPRpLaSokGVo-nYozreGlfQS-tUNXC67AkV3tkV8fq7Ll0CAK_ayo3&currency=EUR&intent=authorize"></script>
-         -->
   <script src="https://www.paypal.com/sdk/js?client-id=AY7aAfew0L4yha9Uihrw0tqORdnPRpLaSokGVo-nYozreGlfQS-tUNXC67AkV3tkV8fq7Ll0CAK_ayo3&currency=EUR"></script>
 
   <script>
+    document.querySelector('.sent-payment').classList.remove('d-block');
+    document.querySelector('.home-btn').classList.remove('d-block');
+
+    document.querySelector("#data").innerHTML = localStorage.getItem("data");
+    document.querySelector("#telefono").innerHTML = localStorage.getItem("telefono");
+    document.querySelector("#servizio").innerHTML = localStorage.getItem("servizio") + " (€" + localStorage.getItem("prezzo") + ")";
+    document.querySelector("#persone").innerHTML = localStorage.getItem("persone");
+    document.querySelector("#note").innerHTML = localStorage.getItem("note");
+    document.querySelector("#indirizzo").innerHTML = localStorage.getItem("indirizzo");
+
     paypal.Buttons({
       createOrder: function(data, actions) {
         // This function sets up the details of the transaction, including the amount and line item details.
@@ -150,30 +202,50 @@ session_start();
       onApprove: function(data, actions) {
         // This function captures the funds from the transaction.
         return actions.order.capture().then(function(details) {
-          // This function shows a transaction success message to your buyer.
-          confirm('Pagamento effettuato! Se vuoi ulteriori informazioni contattaci');
-          fetch('conferma_prenotazione.php', {
-            method: 'POST',
-            headers: {
-              'X-Requested-With': 'XMLHttpRequest'
-            }
-          }).then(response => {
-            if (response.ok) {
-              window.location.replace("");
-            } else {
-              throw new Error(`${response.status} ${response.statusText} ${response.url}`);
-            }
-          }).catch((error) => {
-            alert(error);
-          });
+          document.querySelector("#paypal-button-container").style.display = 'none';
+          document.querySelector('.sent-payment').classList.add('d-block');
+          document.querySelector(".home-btn").classList.add("d-block");
+          localStorage.clear();
         });
       },
       onCancel: function(data) {
-        alert('Cancellato!');
+        fetch("elimina_prenotazione.php", {
+          method: 'POST',
+          body: "data=" + localStorage.getItem("data"),
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+          }
+        }).then(response => {
+
+          if (response.ok) {
+            alert('Cancellato!');
+            return response.text();
+          }
+        }).then(data => {
+          if (data.trim() == "OK") {
+            window.location.replace("index.php");
+          } else {
+            throw new Error(data);
+          }
+        }).catch(error => {
+          console.log(error)
+        });
       },
 
-      onError: function(){
-        alert('Errore!');
+      onError: function(err) {
+        alert(err);
+
+        fetch("elimina_prenotazione.php", {
+          method: 'POST',
+          body: "data=" + localStorage.getItem("data"),
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+          }
+        }).then(response => {
+          if (response.ok) {
+            window.location.replace("index.php");
+          }
+        });
       }
     }).render('#paypal-button-container');
     //This function displays Smart Payment Buttons on your web page.
