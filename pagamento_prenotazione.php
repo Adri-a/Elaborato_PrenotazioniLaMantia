@@ -170,9 +170,9 @@ if (!isset($_SESSION["user"])) {
       </div>
       <div class="mb-3">
         <div class="sent-payment">La tua prenotazione è stata effettuata! Chiama per ulteriori informazioni o ritorna alla home.</div>
-        <a href="index.php" class="home-btn justify-content-center">Home</a>
       </div>
-    </div>
+        <div class="text-center"><a href="index.php" class="home-btn">Home</a></div>
+      </div>
   </section>
   <!-- Script Paypal API -->
   <script src="https://www.paypal.com/sdk/js?client-id=AY7aAfew0L4yha9Uihrw0tqORdnPRpLaSokGVo-nYozreGlfQS-tUNXC67AkV3tkV8fq7Ll0CAK_ayo3&currency=EUR"></script>
